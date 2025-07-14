@@ -1,78 +1,130 @@
+
 body {
-    margin: 0;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #0e0e2c;
-    color: #ffffff;
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #f4f2f7;
+  color: #222;
+  transition: background-color 0.3s, color 0.3s;
 }
 
 header {
-    background-color: #1e1e4d;
-    padding: 20px;
-    text-align: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  position: relative;
 }
 
-header h1 {
-    margin: 0;
-    font-size: 2.5rem;
-    color: #ff4081;
+.logo {
+  font-weight: bold;
 }
 
-nav {
-    display: flex;
-    justify-content: center;
-    gap: 30px;
-    background-color: #141437;
-    padding: 10px 0;
+.actions {
+  position: absolute;
+  right: 2rem;
+  top: 1.2rem;
+  display: flex;
+  gap: 1rem;
 }
 
-nav a {
-    color: #ffffff;
-    text-decoration: none;
-    font-weight: bold;
-    transition: color 0.3s ease;
+#toggle-theme {
+  font-size: 1.2rem;
+  background: none;
+  border: none;
+  cursor: pointer;
 }
 
-nav a:hover {
-    color: #ff4081;
+.menu-toggle {
+  font-size: 1.5rem;
+  background: none;
+  border: none;
+  cursor: pointer;
 }
 
-.content {
-    padding: 30px;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 20px;
+
+.side-menu {
+  position: fixed;
+  top: 0;
+  left: -260px; 
+  width: 250px;
+  height: 100%;
+  background: #ffffff;
+  box-shadow: 2px 0 10px rgba(0,0,0,0.1);
+  display: flex;
+  flex-direction: column;
+  padding: 2rem;
+  transition: left 0.3s ease-in-out;
+  z-index: 999;
 }
 
-.anime-card {
-    background-color: #1c1c3b;
-    border-radius: 10px;
-    overflow: hidden;
-    transition: transform 0.3s ease;
+.side-menu a {
+  margin: 1rem 0;
+  text-decoration: none;
+  color: #222;
+  font-size: 1.1rem;
 }
 
-.anime-card:hover {
-    transform: scale(1.05);
+.side-menu.open {
+  left: 0; 
 }
 
-.anime-card img {
-    width: 100%;
-    height: 300px;
-    object-fit: cover;
+body.dark {
+  background-color: #1a1a1a;
+  color: #f0f0f0;
 }
 
-.anime-card h3 {
-    margin: 10px;
-    color: #ffb347;
+body.dark .side-menu {
+  background-color: #222;
 }
 
-.anime-card p {
-    margin: 0 10px 10px 10px;
-    font-size: 0.9rem;
+body.dark .side-menu a {
+  color: #f0f0f0;
 }
 
-footer {
-    background-color: #1e1e4d;
-    text-align: center;
-    padding: 15px;
-    margin-top: 40px;
+
+main {
+  text-align: center;
+  margin-top: 100px;
 }
+
+h1 {
+  font-size: 3rem;
+  font-weight: 700;
+}
+
+p {
+  font-size: 1.2rem;
+  max-width: 600px;
+  margin: 1rem auto;
+}
+
+.side-menu {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 250px;
+  height: 100%;
+  background: #ffffff;
+  box-shadow: 2px 0 10px rgba(0,0,0,0.1);
+  flex-direction: column;
+  padding: 2rem;
+  z-index: 999;
+  transition: transform 0.3s ease-in-out;
+  transform: translateX(-100%);
+}
+
+
+.side-menu.open {
+  display: flex;
+  transform: translateX(0);
+}
+.logo {
+  height: 40px;
+  transition: filter 0.3s;
+}
+
+body.dark .logo {
+  filter: brightness(0.8) invert(1);
+}
+
