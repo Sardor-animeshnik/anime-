@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MLBB Сборки</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    body {
+      background: #0d0d0d;
+      color: #fff;
+      font-family: sans-serif;
+      text-align: center;
+    }
+
+    header {
+      padding: 20px;
+    }
+
+    .card-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    .card {
+      background: #1e1e1e;
+      border-radius: 12px;
+      padding: 10px;
+      width: 600px;
+      height: 400px;
+      cursor: pointer;
+      transition: transform 0.3s;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .card img {
+      width: 100%;
+      height: 320px;
+      object-fit: cover;
+      border-radius: 10px;
+    }
+
+    .card h3 {
+      margin-top: 10px;
+      font-size: 24px;
+    }
+
+    .card:hover {
+      transform: scale(1.05);
+      background: #2c2c2c;
+    }
+
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 100;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.8);
+    }
+
+    .modal-content {
+      background: #1e1e1e;
+      margin: 10% auto;
+      padding: 20px;
+      width: 80%;
+      max-width: 500px;
+      border-radius: 10px;
+    }
+
+    .close {
+      color: #fff;
+      float: right;
+      font-size: 28px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Сборки Героев MLBB</h1>
+  </header>
+
+  <section class="card-container">
+    <div class="card" onclick="openModal('argus')">
+      <img src="https://avatars.mds.yandex.net/i?id=43097528af5282e8ea174dd3386bd399-3482022-images-thumbs&n=13" alt="Argus" />
+      <h3>Argus</h3>
+    </div>
+    <div class="card" onclick="openModal('gusion')">
+      <img src="https://avatars.mds.yandex.net/i?id=a50430303e85e62abe318ae9f3b58845_l-4450484-images-thumbs&n=13" alt="Gusion" />
+      <h3>Gusion</h3>
+    </div>
+    <div class="card" onclick="openModal('yuzhong')">
+      <img src="https://i.pinimg.com/originals/4f/82/7b/4f827b114f5d9b35361769911a3b21ef.jpg" alt="Yu Zhong" />
+      <h3>Yu Zhong</h3>
+    </div>
+    <div class="card" onclick="openModal('layla')">
+      <img src="https://i.ytimg.com/vi/9MhR5qYb5JI/maxresdefault.jpg" alt="Layla" />
+      <h3>Layla</h3>
+    </div>
+    <div class="card" onclick="openModal('phoveus')">
+      <img src="https://i.ytimg.com/vi/7zU9bJ0XZM8/maxresdefault.jpg" alt="Phoveus" />
+      <h3>Phoveus</h3>
+    </div>
+    <div class="card" onclick="openModal('martis')">
+      <img src="https://i.pinimg.com/originals/9a/13/11/9a131176003d98e6a0d0c13dcdc7a9a9.jpg" alt="Martis" />
+      <h3>Martis</h3>
+    </div>
+    <div class="card" onclick="openModal('hayabusa')">
+      <img src="https://i.pinimg.com/originals/f8/36/6a/f8366ab2e653f9cd52bf5040cefaadff.jpg" alt="Hayabusa" />
+      <h3>Hayabusa</h3>
+    </div>
+    <div class="card" onclick="openModal('esmeralda')">
+      <img src="https://avatars.mds.yandex.net/i?id=216c2be1d7c2402f10df95f2c5e923dac3412c2d-10115334-images-thumbs&n=13" alt="Esmeralda" />
+      <h3>Esmeralda</h3>
+    </div>
+    <div class="card" onclick="openModal('alucard')">
+      <img src="https://i.pinimg.com/originals/4c/cd/bc/4ccdbc3f0082f46e59c6822ac26d9785.jpg" alt="Alucard" />
+      <h3>Alucard</h3>
+    </div>
+    <div class="card" onclick="openModal('lancelot')">
+      <img src="https://yandex-images.clstorage.net/5keY61L32/9d354eaGv/F_22XA2CSyzYtG6GseJwCCXsNshJ599WFbnCShhzrS_Tm2oS6ucMHQpX6bivbIJ7yxBVm5fACXmmSiN7bnHclk7xv0U8n19Fvf126-HCfBwtmUPEDZa3R2HQyztoPsxX55ovrg8nmdCu_nRRYoFje95NCMv_uQE1V_M6qgJgeCuDAfLMbcbmgMj0rwYBclDYKRmCkIFiP_dtQX-f8PsAOr6DS5ozG5HITuqwxTbte6MyKcAL0pl9BYeeAg7qVDjbD-EKVE2qzsSMaK-WmXIE0FGZUqDZ-vvvAT2XuxSriKaKF6uGv4uNfH7GHGU-xVejOpGAFza90U07EnJO_ix43zd5UoCBFr7UcAQPIs167Ag1KZqs8fLb24EZ618UJ-BigjtfGtP_JbDeCmhNHhV3S06lAPv-4QUxh5KKMvZgtA8f5XYklaqmBPy8D6rR1lxIgQUuMDXqL0_JpeNvAKuUhvaXT5rXh0nMkmok8Tbxs1c67cD7siVZfXeKIk7-XMC3B_VaXM3mgvwEaG8m7e5MsH01bsTRkvs7IUWfp8CzGLZGh6dyNxsVYGamsElyBYvPmjUEi4INcX1DVt4muqBYg1cdPhxFwh7ErLQDgoFK-LDpWbLscS5PK32V_1tQO7iurhO_lpMHsfS2Dghl5kEP14qd3HPOkeU994pusop4tBuvcRa4PdrWsKSU_6bRxpC0PUHOrEk-y_tVueuDbLvA1hZP5xLnK3VUmo70PVa11yf-EbAHNpVxuW_mUloawBiDh_XqiC2GKgRQRDPe0Y6o3A0d1jwFmid7WUH3XzSXrPJKdzd-_w8pjLqWLBHifeuzlp0AY35FlT176nrC6siwtyMhgqChVs6kSByX9pFa1FARHUqY5V7fW0WxD6uIt7RaQn9P4qMbWQRydpDNyhF3S9YtVNu2vZFlrzpmQnoUqDMHYSas6dKCJKwg86pxTpA0ZYlW9H1e-ydByUtbGGto" alt="Lancelot" />
+      <h3>Lancelot</h3>
+    </div>
+    <div class="card" onclick="openModal('chou')">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTDyS0fNptcYyMqdNT353uRFg1OuA1acwQHOw&s" alt="Chou" />
+      <h3>Chou</h3>
+    </div>
+  </section>
+
+  <div id="modals"></div>
+
+  <script>
+    const builds = {
+      argus: {
+        title: "Сборка для Argus",
+        items: "Demon Hunter Sword, Tough Boots, Haas's Claws, Berserker's Fury, Windtalker, Malefic Roar",
+        emblem: "Убийца",
+        spell: "Вспышка"
+      },
+      gusion: {
+        title: "Сборка для Gusion",
+        items: "Arcane Boots, Genius Wand, Calamity Reaper, Divine Glaive, Holy Crystal, Blood Wings",
+        emblem: "Маг",
+        spell: "Кара"
+      },
+      yuzhong: {
+        title: "Сборка для Yu Zhong",
+        items: "War Axe, Tough Boots, Bloodlust Axe, Hunter Strike, Oracle, Dominance Ice",
+        emblem: "Боец",
+        spell: "Вспышка"
+      },
+      layla: {
+        title: "Сборка для Layla",
+        items: "Swift Boots, Berserker's Fury, Scarlet Phantom, Windtalker, Demon Hunter Sword, Malefic Roar",
+        emblem: "Стрелок",
+        spell: "Спурт"
+      },
+      phoveus: {
+        title: "Сборка для Phoveus",
+        items: "Tough Boots, Clock of Destiny, Lightning Truncheon, Concentrated Energy, Oracle, Divine Glaive",
+        emblem: "Маг",
+        spell: "Оглушение"
+      },
+      martis: {
+        title: "Сборка для Martis",
+        items: "War Axe, Tough Boots, Blade of Despair, Hunter Strike, Brute Force Breastplate, Immortality",
+        emblem: "Убийца",
+        spell: "Вспышка"
+      },
+      hayabusa: {
+        title: "Сборка для Hayabusa",
+        items: "War Axe, Tough Boots, Hunter Strike, Blade of Heptaseas, Blade of Despair, Malefic Roar",
+        emblem: "Убийца",
+        spell: "Кара"
+      },
+      esmeralda: {
+        title: "Сборка для Esmeralda",
+        items: "Enchanted Talisman, Tough Boots, Oracle, Dominance Ice, Ice Queen Wand, Immortality",
+        emblem: "Маг",
+        spell: "Очищение"
+      },
+      alucard: {
+        title: "Сборка для Alucard",
+        items: "War Axe, Tough Boots, Endless Battle, Haas's Claws, Blade of Despair, Immortality",
+        emblem: "Боец",
+        spell: "Возмездие"
+      },
+      lancelot: {
+        title: "Сборка для Lancelot",
+        items: "War Axe, Tough Boots, Hunter Strike, Blade of Despair, Endless Battle, Immortality",
+        emblem: "Убийца",
+        spell: "Кара"
+      },
+      chou: {
+        title: "Сборка для Chou",
+        items: "War Axe, Tough Boots, Blade of Heptaseas, Athena's Shield, Immortality, Dominance Ice",
+        emblem: "Боец",
+        spell: "Вспышка"
+      }
+    };
+
+    const modalContainer = document.getElementById("modals");
+
+    for (let id in builds) {
+      const build = builds[id];
+      modalContainer.innerHTML += `
+        <div id="modal-${id}" class="modal">
+          <div class="modal-content">
+            <span class="close" onclick="closeModal('${id}')">&times;</span>
+            <h2>${build.title}</h2>
+            <p><strong>Предметы:</strong> ${build.items}</p>
+            <p><strong>Эмблема:</strong> ${build.emblem}</p>
+            <p><strong>Заклинание:</strong> ${build.spell}</p>
+          </div>
+        </div>
+      `;
+    }
+
+    function openModal(id) {
+      document.getElementById("modal-" + id).style.display = "block";
+    }
+
+    function closeModal(id) {
+      document.getElementById("modal-" + id).style.display = "none";
+    }
+  </script>
+</body>
+</html>
